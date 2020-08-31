@@ -20,6 +20,9 @@ chrome.browserAction.onClicked.addListener(() => {
         console.log("location is: " + view.location.href);
         if (view.location.href === capture_url) {
           console.log("capture url is: " + capture_url);
+          chrome.runtime.onConnect.addListener(function(port){
+            port.postMessage({url: url});
+          });
           console.log("yes");
         };
       });
