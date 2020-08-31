@@ -1,6 +1,10 @@
 let id = 1;
 
 chrome.browserAction.onClicked.addListener(() => {
+  captureTab();
+});
+
+function captureTab(){
   chrome.tabs.captureVisibleTab((url) => {
     console.log("captured, id is: " + id);
     const capture_url = chrome.extension.getURL(`capture.html?id=${id++}`);
@@ -29,4 +33,4 @@ chrome.browserAction.onClicked.addListener(() => {
     });
     console.log("id is: " + id);
   });
-});
+}
