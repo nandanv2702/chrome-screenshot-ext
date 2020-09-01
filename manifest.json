@@ -24,9 +24,6 @@
       "js": ["capture.js"]
     }
   ],
-  "web_accessible_resources": [
-    "capture.js"
-  ],
   "manifest_version": 2,
   "content_security_policy": "script-src 'self'; object-src 'self'"
 }

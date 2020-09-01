@@ -8,6 +8,7 @@ port.onMessage.addListener(function(message,sender){
   setScreenshotUrl(message.url);
 });
 
+// sets the image as the image data we received
 function setScreenshotUrl(url) {
   console.log("url is: " + url);
   document.getElementById('img-target').src = url;
