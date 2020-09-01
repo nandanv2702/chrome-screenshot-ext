@@ -1,7 +1,9 @@
 let id = 1;
 
+window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
+
 chrome.browserAction.onClicked.addListener(() => {
-  captureTab();
+  saveimg(captureTab());
 });
 
 function captureTab(){
@@ -33,4 +35,9 @@ function captureTab(){
     });
     console.log("id is: " + id);
   });
+  return url;
+}
+
+function saveimg(imgData){
+
 }

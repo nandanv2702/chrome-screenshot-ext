@@ -1,18 +1,28 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <script src="capture.js"></script>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <style media="screen">
-    body {
-      background-color: yellow;
-    }
-  </style>
-  <body>
-    <div style="display: flex; justify-content: center; align-items: center;">
-        <img src="camera.png" alt="" id="img-target" width="96%" style="border: 3px solid black;">
-    </div>
-  </body>
+<script src="capture.js"></script>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<style media="screen">
+  body {
+    background-color: yellow;
+  }
+
+  .image {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+</style>
+
+<body>
+  <div>
+    <img class="image" src="" alt="" id="img-target" width="96%">
+  </div>
+</body>
+
 </html>

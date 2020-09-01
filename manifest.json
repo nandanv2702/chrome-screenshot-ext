@@ -8,13 +8,15 @@
   },
   "browser_action": {
     "default_icon": "camera.png",
-    "default_title": "Take a screenshot!"
+    "default_title": "Take a screenshot!",
+    "default_popup": "popup.html"
   },
   "icons": {
     "16": "camera.png"
   },
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "storage"
   ],
   "manifest_version": 2
 }
