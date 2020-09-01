@@ -1,9 +1,14 @@
 let id = 1;
 
-window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
+chrome.runtime.onMessage.addListener((message) => {
+  console.log(message);
+});
 
-chrome.browserAction.onClicked.addListener(() => {
-  saveimg(captureTab());
+// listens to messages from the js file attached to the popup and then executes respective functions if it's a screenshot or screen capture (coming soon)
+chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
+  if(request.msg == "screenshot"){
+    captureTab();
+  };
 });
 
 function captureTab(){
@@ -35,9 +40,4 @@ function captureTab(){
     });
     console.log("id is: " + id);
   });
-  return url;
-}
-
-function saveimg(imgData){
-
-}
+};

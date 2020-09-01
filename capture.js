@@ -6,7 +6,6 @@ console.log("conn on");
 var port = chrome.runtime.connect({name:"mycontentscript"});
 port.onMessage.addListener(function(message,sender){
   setScreenshotUrl(message.url);
-
 });
 
 function setScreenshotUrl(url) {
