@@ -47,3 +47,7 @@ function captureTab(){
     console.log("id is: " + id);
   });
 };
+
+function recordTab(){
+  // complete
+};
