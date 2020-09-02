@@ -38,7 +38,7 @@ function captureTab(){
           console.log("capture url is: " + capture_url);
           // once we have the url, we send the image data to the 'capture.js' file in the html page we created. The image will then be rendered on the html page
           chrome.runtime.onConnect.addListener(function(port){
-            port.postMessage({url: url});
+            port.postMessage({url: url, id: id-1});
           });
           console.log("yes");
         };
