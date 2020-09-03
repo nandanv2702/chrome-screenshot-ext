@@ -5,11 +5,15 @@ chrome.runtime.onMessage.addListener((message) => {
 });
 
 // listens to messages from the js file attached to the popup and then executes respective functions if it's a screenshot or screen capture (coming soon)
-chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   if(request.msg == "screenshot"){
     captureTab();
+  } else if(request.msg == "scrcapture"){
+    // records the tab/window/anything you need
+    recordTab();
+  } else if(request.msg == "stop"){
+    stopRec();
   };
-  //handle for screen capture
 });
 
 function captureTab(){
@@ -48,6 +52,42 @@ function captureTab(){
   });
 };
 
+let video = document.getElementById("video");
+
 function recordTab(){
-  // complete
+  let sources = ["screen", "tab", "window", "audio"];
+  let constraints = {video: true};
+
+  chrome.desktopCapture.chooseDesktopMedia(sources, async function(streamId){
+    let captureStream = null;
+    try {
+      let stream = await navigator.mediaDevices.getDisplayMedia(constraints);
+      
+      stream.getVideoTracks()[0].addEventListener('ended', (stream) => {
+        console.log("user ended rec session");
+
+        console.log(stream);
+
+      //   chrome.downloads.download({
+      //     url: stream,
+      //     filename: 'video',
+      //     saveAs: false
+      // }, function (downloadId) {
+      //     console.log(downloadId);
+      // });
+      });
+    } catch(err) {
+      console.log(err);
+    }
+    return captureStream;
+    console.log("does this work?");
+  });
+};
+
+function stopRec(){
+  let tracks = video.srcObject.getTracks();
+
+  tracks.forEach(track => track.stop());
+  video.srcObject = null;
+  video.style.display = "none";
 };
